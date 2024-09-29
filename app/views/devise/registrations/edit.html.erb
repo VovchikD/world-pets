@@ -1,0 +1,54 @@
+<div class="flex items-center justify-center mt-20">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <div class="mx-auto mb-4">
+      <img class="mx-auto h-10 w-auto mb-4" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+      <h2 class="text-center text-3xl font-bold text-green">Edit Profile</h2>
+    </div>
+
+    <%= form_for @user, url: user_registration_path(@user), method: :patch do |f| %>
+      <%= render "devise/shared/error_messages", resource: @user %>
+
+      <div class="mt-4 sm:w-full sm:max-w-sm">
+        <%= f.label :username, class: "block text-sm font-medium leading-6 text-gray-900" %>
+        <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "w-full py-2 px-3 border rounded-md focus:ring focus:ring-green-300" %>
+      </div>
+
+      <div class="mt-4 sm:w-full sm:max-w-sm">
+        <%= f.label :surname, class: "block text-sm font-medium leading-6 text-gray-900" %>
+        <%= f.text_field :surname, autofocus: true, autocomplete: "surname", class: "w-full py-2 px-3 border rounded-md focus:ring focus:ring-green-300" %>
+      </div>
+
+      <div class="mt-4 sm:w-full sm:max-w-sm">
+        <%= f.label :location, class: "block text-sm font-medium leading-6 text-gray-900" %>
+        <%= f.text_field :location, autofocus: true, autocomplete: "location", class: "w-full py-2 px-3 border rounded-md focus:ring focus:ring-green-300" %>
+      </div>
+
+      <div class="mt-4 sm:w-full sm:max-w-sm">
+        <%= f.label :phone_number, class: "block text-sm font-medium leading-6 text-gray-900" %>
+        <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone", class: "w-full py-2 px-3 border rounded-md focus:ring focus:ring-green-300" %>
+      </div>
+
+      <div class="mt-4 sm:w-full sm:max-w-sm">
+        <%= f.label :email, class: "block text-sm font-medium leading-6 text-gray-900" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full py-2 px-3 border rounded-md focus:ring focus:ring-green-300" %>
+      </div>
+
+      <div class="mt-4 sm:w-full sm:max-w-sm">
+        <%= f.label :password, class: "block text-sm font-medium leading-6 text-gray-900" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "w-full py-2 px-3 border rounded-md focus:ring focus:ring-green-300" %>
+        <% if @user.errors[:password].present? %>
+          <small class="text-red-500"><%= @user.errors[:password].first %></small>
+        <% end %>
+      </div>
+
+      <div class="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
+        <%= f.label :password_confirmation, class: "block text-sm font-medium leading-6 text-gray-900" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-full py-2 px-3 border rounded-md focus:ring focus:ring-green-300" %>
+      </div>
+
+      <div class="mt-6 sm:w-full sm:max-w-sm">
+        <%= f.submit "Update Profile", class: "flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm leading-6 text-white shadow-sm hover:bg-indigo-500" %>
+      </div>
+    <% end %>
+  </div>
+</div>
